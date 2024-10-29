@@ -1,14 +1,26 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+    println("Введите количество строк:")
+    val rows = readln().toInt()
+    println("Введите количество столбцов:")
+    val cols = readln().toInt()
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+    val array = Array(rows) { IntArray(cols) }
+    val digitSet = mutableSetOf<Char>()
+
+    println("Введите $rows × $cols трехзначных чисел:")
+    for (i in 0..<rows) {
+        for (j in 0..<cols) {
+            array[i][j] = readln().toInt()
+            digitSet.addAll(array[i][j].toString().toCharArray().map { it })
+        }
     }
+
+
+    println("Двумерный массив:")
+    for (row in array) {
+        println(row.joinToString(" "))
+    }
+2
+
+    println("В массиве использовано ${digitSet.size} различных цифр")
 }
